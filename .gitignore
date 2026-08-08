@@ -18,3 +18,8 @@ e2e/results
 state.db
 state.db-shm
 state.db-wal
+
+# Machine-local Claude Code wiring — KHÔNG bao giờ commit (color-kit init-harness)
+.claude/settings.json
+.claude/settings.local.json
+CLAUDE.local.md

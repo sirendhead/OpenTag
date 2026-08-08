@@ -101,3 +101,18 @@ you actually ran; do not claim a check that did not run.
   as a tested pair.
 - Commit messages follow the conventional prefixes already in the log (`feat:`,
   `fix:`, `docs:`, `chore:`), scoped where it helps.
+
+<!-- BEGIN:color-kit-harness-shim — máy quản lý (init-harness); custom viết NGOÀI block -->
+## Context routing (color-kit harness)
+
+Đọc theo thứ tự trước khi làm việc:
+1. `memory-bank/activeContext.md` — trạng thái + việc kế tiếp
+2. `TASKS.md` — work-log của repo (Workforce)
+3. `CLAUDE.md` — vision + domain knowledge của repo
+4. `docs/plans/` (frontmatter `status: active`) — plan-of-record; **"tiếp" = mục kế từ đây**
+5. `docs/` — PRD/spec/ADR nếu có
+
+Gate: `scripts/verify` (nếu có) trước commit; CI ở `.github/workflows/`.
+Discipline: việc mới → sprint Workforce trước khi code; xong → wrapup cập nhật
+`memory-bank/` + TASKS.md; chi tiêu mới → hỏi operator.
+<!-- END:color-kit-harness-shim -->
