@@ -1,0 +1,28 @@
+name: Sync upstream
+
+# Keep this fork's main up to date with CopilotKit/OpenTag.
+# GitHub cannot trigger on upstream pushes, so this polls hourly;
+# merge-upstream is a no-op when there is nothing new.
+
+on:
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Merge upstream/main into fork main
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          result=$(gh api "repos/${GITHUB_REPOSITORY}/merge-upstream" -f branch=main --jq '.merge_type' || echo "conflict")
+          echo "merge_type=${result}"
+          if [ "$result" = "conflict" ]; then
+            echo "Upstream sync hit a merge conflict — resolve manually (git fetch upstream && git merge upstream/main)." >&2
+            exit 1
+          fi
